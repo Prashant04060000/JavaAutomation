@@ -13,6 +13,7 @@ public class Chromeassign1 {
 				login();
 				minimizeFlyOutWindow();
 				createuser();
+				deleteuser();
 				logout();
 				closeApplication();
 				
@@ -68,8 +69,9 @@ public class Chromeassign1 {
 				try
 				{
 				oBrowser.findElement(By.xpath("//*[@id='topnav']/tbody/tr[1]/td[5]/a/div[2]")).click();
-				
+				Thread.sleep(2000);
 				oBrowser.findElement(By.xpath("//*[@id='createUserDiv']/div/div[2]")).click();
+				Thread.sleep(2000);
 				oBrowser.findElement(By.name("firstName")).sendKeys("user1");
 				oBrowser.findElement(By.name("lastName")).sendKeys("demo1");
 				oBrowser.findElement(By.name("email")).sendKeys("demo1@gmail.com");
@@ -84,7 +86,20 @@ public class Chromeassign1 {
 					e.printStackTrace();
 				}
 			}
-		
+		   public static void deleteuser()
+		   {
+		 	  try
+		 	  {
+		 		  oBrowser.findElement(By.xpath("//*[@id=\'userListTableContainer\']/table/tbody/tr[2]/td[1]/table/tbody/tr/td/div[1]/span[2]")).click();
+		 		  Thread.sleep(2000);
+		 		  oBrowser.findElement(By.id("userDataLightBox_deleteBtn")).click();
+		 		  Thread.sleep(2000);
+		 		  oBrowser.switchTo().alert().accept();
+		 	  }catch(Exception e)
+		 		{
+		 			e.printStackTrace();
+		 		}
+		   }
 			
 			static void logout()
 			{
